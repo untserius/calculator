@@ -3,9 +3,61 @@
 	<head>
 		<title>Calculator</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		/>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<div class="main">
+			<div class="calculator">
+				<div id="display">00</div>
+				<div class="btns">
+					<button id="clearButton" onclick="clear()">C</button>
+					<button id="whitebtn" onclick="deleteChar()">
+						<i class="fa-solid fa-delete-left"></i>
+					</button>
+					<button id="whitebtn" onclick="showNumber('%')">%</button>
+					<button id="orangebtn" onclick="setOperator('/')">/</button>
+					<button onclick="showNumber(7)">7</button>
+					<button onclick="showNumber(8)">8</button>
+					<button onclick="showNumber(9)">9</button>
+					<button id="orangebtn" onclick="setOperator('*')">x</button>
+					<button onclick="showNumber(4)">4</button>
+					<button onclick="showNumber(5)">5</button>
+					<button onclick="showNumber(6)">6</button>
+					<button id="orangebtn" onclick="setOperator('-')">-</button>
+					<button onclick="showNumber(1)">1</button>
+					<button onclick="showNumber(2)">2</button>
+					<button onclick="showNumber(3)">3</button>
+					<button id="orangebtn" onclick="setOperator('+')">+</button>
+					<button class="zero" onclick="showNumber(0)">0</button>
+					<button onclick="showNumber('.')">.</button>
+					<button id="orangebtn" onclick="calculate()">=</button>
+				</div>
+			</div>
+
+			<div class="footer">
+				<p>&copy Sudhir Das</p>
+
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+
+				<p>|</p>
+
+				<a href="https://github.com/untserius/calculator" target="_blank"
+					>Source Code</a
+				>
+			</div>
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>
