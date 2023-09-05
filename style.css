@@ -39,13 +39,16 @@
 
 .calculator #display {
 	display: flex;
-	justify-content: right;
-	align-items: flex-end;
-	padding-right: 25px;
-	font-size: 90px;
-	height: 250px;
+	justify-content: flex-end;
+	align-items: last baseline;
+	padding: 0 25px;
+	font-size: 80px;
+	height: 200px;
 	color: #fff;
-	border-radius: 20px;
+	/* border-radius: 20px; */
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
 }
 
 button {
@@ -55,6 +58,15 @@ button {
 	border-radius: 50%;
 	border: 0;
 	background: rgb(53, 53, 53);
+}
+
+button:hover {
+	transform: translateX(-2px) translateY(-2px);
+}
+
+button:active {
+	background-color: rgb(116, 116, 116);
+	transform: translateX(0) translateY(0);
 }
 
 #whitebtn {
@@ -83,7 +95,7 @@ button {
 	margin-top: 50px;
 	display: flex;
 	justify-content: center;
-	gap: 5px;
+	gap: 10px;
 }
 
 .footer a {

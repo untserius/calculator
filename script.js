@@ -30,6 +30,16 @@ function operate(operator, num1, num2) {
 	else return "Invalid Operation";
 }
 
+function percent() {
+	if (displayValue !== "Invalid Operation") {
+		const percentValue = parseFloat(displayValue) / 100;
+		displayValue = percentValue.toString();
+		document.getElementById("display").textContent = displayValue;
+	}
+}
+
+let maxDisplayLength = 8;
+
 function showNumber(num) {
 	if (displayValue === "0" || displayValue === "Invalid Operation") {
 		displayValue = num.toString();
@@ -38,6 +48,17 @@ function showNumber(num) {
 			return;
 		}
 		displayValue += num.toString();
+	}
+
+	//limit for max display length
+	if (displayValue.length > maxDisplayLength) {
+		displayValue = displayValue.slice(0, maxDisplayLength);
+	}
+
+	if (displayValue.length > 6) {
+		document.getElementById("display").style.fontSize = "60px";
+	} else {
+		document.getElementById("display").style.fontSize = "80px";
 	}
 
 	document.getElementById("display").textContent = displayValue;
@@ -61,12 +82,15 @@ function setOperator(selectedOperator) {
 
 function calculate() {
 	if (firstNum != "" && operator != "" && secondNum != "") {
-		const result = operate(
-			operator,
-			parseFloat(firstNum),
-			parseFloat(secondNum)
+		const result = roundResult(
+			operate(operator, parseFloat(firstNum), parseFloat(secondNum))
 		);
+
 		document.getElementById("display").textContent = result.toString();
+
+		if (result.toString().length > maxDisplayLength) {
+			document.getElementById("display").style.fontSize = "25px";
+		}
 
 		//reset for further calculation
 		firstNum = result.toString();
@@ -83,7 +107,7 @@ function clearCalculator() {
 	firstNum = "";
 	secondNum = "";
 	operator = "";
-	displayValue = "";
+	displayValue = "0";
 
 	document.getElementById("display").textContent = displayValue;
 }
@@ -94,4 +118,8 @@ function deleteChar() {
 	}
 
 	document.getElementById("display").textContent = displayValue;
+}
+
+function roundResult(number) {
+	return Math.round(number * 1000) / 1000;
 }
